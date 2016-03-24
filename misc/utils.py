@@ -9,3 +9,11 @@ def sizeof_fmt(num, sep=''):
             return "%3.1f %s" % (num, unit)
         num /= 1024.0
     return "%.1f %s" % (num, 'YB')
+
+
+def count(df, colname):
+    '''return the count and percentage for a given column after groupby'''
+    # it can be any column other than 'study'
+    res = df[['study', colname]].groupby(colname).count().sort_values('study')
+    res['percent'] = (res.study / res.sum().values[0]).apply('{0:.2%}'.format)
+    return res
