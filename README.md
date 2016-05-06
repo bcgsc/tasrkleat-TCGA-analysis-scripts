@@ -9,7 +9,7 @@ file using [pandas](http://pandas.pydata.org/).
 
 Install anacdona, then
 
-    conda create -p venv --file requirements.conda
+    conda create -p venv -y pandas jupyter matplotlib
 	source activate venv
 
 or use virtualenv + pip
