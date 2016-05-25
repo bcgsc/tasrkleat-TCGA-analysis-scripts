@@ -4,7 +4,7 @@ def sizeof_fmt(num, sep=''):
     :param sep': separate between the number of unit, sometimes it's preferred
     for better readability
     '''
-    for unit in ['Bytes','KB','MB','GB','TB','PB','EB','ZB']:
+    for unit in ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB']:
         if abs(num) < 1024.0:
             return "%3.1f %s" % (num, unit)
         num /= 1024.0
