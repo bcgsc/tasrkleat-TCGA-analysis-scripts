@@ -6,9 +6,9 @@ def sizeof_fmt(num, sep=''):
     '''
     for unit in ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB']:
         if abs(num) < 1024.0:
-            return "%3.1f %s" % (num, unit)
+            return "%3.1f%s" % (num, unit)
         num /= 1024.0
-    return "%.1f %s" % (num, 'YB')
+    return "%.1f%s" % (num, 'YB')
 
 
 def count(df, colname):
