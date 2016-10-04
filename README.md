@@ -1,3 +1,5 @@
+## Raw data
+
 `ucsc.gtf.gz` is downloaded from http://genome.ucsc.edu/cgi-bin/hgTables. See
 `how-to-download-ucsc-gtf-gz.png` for the parameters selected when it's
 downloaded.
@@ -11,9 +13,9 @@ basically the same as `ucsc.gtf.gz` but with gene_id attribute modified.
 http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz.
 
 
-# To reproduce the results as in `diff`
+## To reproduce the results as in `diff`
 
-## `ensembl.fixed.sorted.gz` vs `ucsc.gtf.gz`
+### `ensembl.fixed.sorted.gz` vs `ucsc.gtf.gz`
 
 To verify `ensembl.fixed.sorted.gz` and `ucsc.gtf.gz` are largely the same.
 
@@ -37,7 +39,7 @@ for c in exon CDS start_codon stop_codon; do
 done
 ```
 
-## `ensembl.fixed.sorted.gz` vs `Homo_sapiens.GRCh37.75.gtf.gz`
+### `ensembl.fixed.sorted.gz` vs `Homo_sapiens.GRCh37.75.gtf.gz`
 
 To show `ensembl.fixed.sorted.gz` and `Homo_sapiens.GRCh37.75.gtf.gz` downloaded
 from Ensembl directly have different coordinates.
@@ -66,13 +68,15 @@ done
 general, some of the CDS coordinates in ucsc.gtf.gz have 3 more bases than
 corresponding ones in ensembl.fixed.sorted.gz. 
 
-3. `dan_stop_codons.tsv` is a *subset* of `ens_stop_codons.tsv`. For some of the
-annotations in `dan_stop_codons.tsv`, but they don't really look like so when
-inspected closely. e.g. chr1:738532-738534, minus strand, the bases are GTC,
-which doesn't correspond to any of the stop codons (UAA, UAG, UGA)
+3. Problem: `dan_stop_codons.tsv` is a *subset* of `ens_stop_codons.tsv`. For
+some of the annotations in `dan_stop_codons.tsv`, but they don't really look
+like so when inspected closely. e.g. chr1:738532-738534, minus strand, the bases
+are GTC, which doesn't correspond to any of the stop codons (UAA, UAG, UGA)
 
-4. This is common to both `dan_stop_codons.tsv` and `ens_stop_codons.tsv`: some
-of the stop codons are only two bp. Not sure why. e.g. chr1:1203242-1203243
+4. Problem: this is common to both `dan_stop_codons.tsv` and
+`ens_stop_codons.tsv`: some of the stop codons are only two bp (e.g.
+chr1:1203242-1203243). Not sure why.
+
 
 ### Conclusion
 
