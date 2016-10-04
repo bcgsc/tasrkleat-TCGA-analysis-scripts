@@ -1,15 +1,21 @@
-`ensembl.fixed.sorted.gz` is downloaded from
-https://github.com/bcgsc/KLEAT/raw/master/ensembl.fixed.sorted.gz.
-
 `ucsc.gtf.gz` is downloaded from http://genome.ucsc.edu/cgi-bin/hgTables. See
 `how-to-download-ucsc-gtf-gz.png` for the parameters selected when it's
 downloaded.
 
-`ensembl.fixed.sorted.gz` is supposed to be the same as `ucsc.gtf.gz` but with
-gene_id attribute modified. 
+`ensembl.fixed.sorted.gz` is downloaded from
+https://github.com/bcgsc/KLEAT/raw/master/ensembl.fixed.sorted.gz. It's
+basically the same as `ucsc.gtf.gz` but with gene_id attribute modified.
 
 
-To verify ``ensembl.fixed.sorted.gz` and `ucsc.gtf.gz` are largely the same.
+`Homo_sapiens.GRCh37.75.gtf.gz` is downloaded from
+http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz.
+
+
+# To reproduce the results as in `diff`
+
+## `ensembl.fixed.sorted.gz` vs `ucsc.gtf.gz`
+
+To verify `ensembl.fixed.sorted.gz` and `ucsc.gtf.gz` are largely the same.
 
 ```
 ln -sf ensembl.fixed.sorted.gz dan.gtf.gz
@@ -31,14 +37,14 @@ for c in exon CDS start_codon stop_codon; do
 done
 ```
 
-To show ensembl.fixed.sorted.gz from UCSC and Homo_sapiens.GRCh37.75.gtf.gz
-downloaded from Ensembl directly have different coordinates.
+## `ensembl.fixed.sorted.gz` vs `Homo_sapiens.GRCh37.75.gtf.gz`
+
+To show `ensembl.fixed.sorted.gz` and `Homo_sapiens.GRCh37.75.gtf.gz` downloaded
+from Ensembl directly have different coordinates.
 
 The following analysis are limited to Chromosome 1.
 
 ```
-wget --no-clobber http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz
-
 ln -sf Homo_sapiens.GRCh37.75.gtf.gz ens.gtf.gz
 
 for c in exon CDS start_codon stop_codon; do
@@ -52,7 +58,7 @@ for c in exon CDS start_codon stop_codon; do
 done
 ```
 
-### Finding: 
+### Finding:
 
 1. All exon coordinates in them are the same.
 
