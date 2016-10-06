@@ -6,7 +6,7 @@ downloaded.
 
 `ensembl.fixed.sorted.gz` is downloaded from
 https://github.com/bcgsc/KLEAT/raw/master/ensembl.fixed.sorted.gz. It's
-basically the same as `ucsc.gtf.gz` but with gene_id attribute modified.
+basically the same as `ucsc.gtf.gz` but with `gene_id` attribute modified.
 
 
 `Homo_sapiens.GRCh37.75.gtf.gz` is downloaded from
@@ -14,6 +14,8 @@ http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gt
 
 
 ## To reproduce the results as in `diff`
+
+The following analysis are limited to Chromosome 1.
 
 ### `ensembl.fixed.sorted.gz` vs `ucsc.gtf.gz`
 
@@ -28,7 +30,7 @@ done
 wait
 
 for c in exon CDS start_codon stop_codon; do
-    zcat ucsc.gtf.gz  | \grep -P "^chr1\t.*\t${c}\t" | sed 's/^chr//g' | awk '{print $1,$3,$4,$5,$7}' | tr ' ' '\t' | sort -k 1n -k 3n -k 4n  > ucsc_${c}.tsv
+    zcat ucsc.gtf.gz  | \grep -P "^chr1\t.*\t${c}\t" | sed 's/^chr//g' | awk '{print $1,$3,$4,$5,$7}' | tr ' ' '\t' | sort -k 1n -k 3n -k 4n  > ucsc_${c}.tsv &
 done
 wait
 
@@ -43,8 +45,6 @@ done
 
 To show `ensembl.fixed.sorted.gz` and `Homo_sapiens.GRCh37.75.gtf.gz` downloaded
 from Ensembl directly have different coordinates.
-
-The following analysis are limited to Chromosome 1.
 
 ```
 ln -sf Homo_sapiens.GRCh37.75.gtf.gz ens.gtf.gz
@@ -62,11 +62,11 @@ done
 
 ### Finding:
 
-1. All exon coordinates in them are the same.
+1. All exon coordinates in `ens_exon.tsv` and `dan_exon.tsv` are the same.
 
-2. Not all CDS, start\_codon, stop\_codon coordinates in them are the same. In
-general, some of the CDS coordinates in ucsc.gtf.gz have 3 more bases than
-corresponding ones in ensembl.fixed.sorted.gz. 
+2. Not all CDS, start\_codon, stop\_codon coordinates in `ens.gtf.gz` and `dan_gtf.gz` are the same. In
+general, some of the CDS coordinates in `ens.gtf.gz` have 3 more bases than
+corresponding ones in `dan.gtf.gz`. 
 
 3. Problem: `dan_stop_codons.tsv` is a *subset* of `ens_stop_codons.tsv`. For
 some of the annotations in `dan_stop_codons.tsv`, but they don't really look
@@ -82,4 +82,4 @@ chr1:1203242-1203243). Not sure why.
 
 The two, `ensembl.fixed.sorted.gz` and `Homo_sapiens.GRCh37.75.gtf.gz` are not
 the same, and shouldn't be used interchangably. The annotations for MT and
-unassembled contigs are expected to be more different based on observation
+unassembled contigs are expected to be more different based on observation.
