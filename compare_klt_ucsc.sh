@@ -17,8 +17,10 @@ for gtf_prefix in klt ucsc; do
 done
 wait
 
-# Then compare them, respectively, which should print all 0
+# Then compare them, respectively
 for fea in ${FEATURES}; do
+    echo "should print out all 0s"
+    echo -n "comparing ${fea}: "
     diff ${OUTPUT}/klt_${fea}.tsv ${OUTPUT}/ucsc_${fea}.tsv
     echo $?
 done
