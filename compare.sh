@@ -32,6 +32,6 @@ echo "# Comparing klt.gz & ens.gz..."
 echo "If the two are the same, the returncode should be 0"
 for fea in ${FEATURES}; do
     echo -n "comparing ${fea}: "
-    sdiff ${OUTPUT}/klt_${fea}.tsv ${OUTPUT}/ens_${fea}.tsv > ${OUTPUT}/sdiff_${fea}.tsv
+    sdiff ${OUTPUT}/klt_${fea}.tsv ${OUTPUT}/ens_${fea}.tsv > ${OUTPUT}/sdiff_${fea}.log
     echo $?
 done
