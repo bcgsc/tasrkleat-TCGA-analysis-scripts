@@ -1,16 +1,25 @@
-## Raw data
+## Raw data inside `gtfs`
 
-`ucsc.gtf.gz` is downloaded from http://genome.ucsc.edu/cgi-bin/hgTables. See
-`how-to-download-ucsc-gtf-gz.png` for the parameters selected when it's
-downloaded.
+`ucsc.gtf.gz` was downloaded from http://genome.ucsc.edu/cgi-bin/hgTables, and
+then sorted and indexed. See `how-to-download-ucsc-gtf-gz.png` for the
+parameters selected when it's downloaded.
 
-`ensembl.fixed.sorted.gz` is downloaded from
-https://github.com/bcgsc/KLEAT/raw/master/ensembl.fixed.sorted.gz. It's
-basically the same as `ucsc.gtf.gz` but with `gene_id` attribute modified.
+`Homo_sapiens.GRCh37.75.gtf.gz` was downloaded from
+http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz,
+and then sorted and indexed.
 
+Commands used for sorting and indexing:
+```bash
+# ref: http://www.htslib.org/doc/tabix.html
+for GTF_PREFIX in ucsc.gtf.gz Homo_sapiens.GRCh37.75.gtf; do 
+    unpigz -c ${GTF_PREFIX}.gz | \grep -v ^"#" | sort -k1,1 -k4,4n | bgzip > ${GTF_PREFIX}.sorted.gz
+    tabix Homo_sapiens.GRCh37.75.gtf.sorted.gz
+done
+```
 
-`Homo_sapiens.GRCh37.75.gtf.gz` is downloaded from
-http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz.
+`ensembl.fixed.sorted.gz` and `ensembl.fixed.sorted.gz.tbi` were downloaded from
+https://github.com/bcgsc/KLEAT/. The former is basically the same as
+`ucsc.gtf.gz` but with its `gene_id` attribute modified.
 
 
 ## To reproduce the results as in `diff`
