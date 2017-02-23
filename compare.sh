@@ -7,7 +7,7 @@ echo "# First, extracting features into separate files..."
 # NOTE: ens.gz uses 1 while the other two use chr1)
 for gtf_prefix in klt ucsc ens; do
     for fea in ${FEATURES}; do
-        zcat ${gtf_prefix}.gz \
+        zcat ${gtf_prefix}.gtf.gz \
             | \grep -P "^(?:chr)?1\t.*\t${fea}\t" \
             | sed 's/^chr//g' \
             | awk '{print $1,$3,$4,$5,$7}' \
