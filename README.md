@@ -65,7 +65,11 @@ done
 3. Problem: `klt_stop_codons.tsv` is a *superset* of `ens_stop_codons.tsv`.
 However, for some of the annotations in `klt_stop_codons.tsv`, it doesn't really
 look like a stop codon when inspected closely. e.g. chr1:738532-738534, minus
-strand:
+strand. The corresponding bases are CTG with reverse complementary as CAG, which
+is a codon for Glutamine (Q), and does not correspond to any of the
+[stop codons](https://en.wikipedia.org/wiki/Stop_codon): **TAG**, **TAA**, and
+**TGA** in DNA, or **UAG**, **UAA**, and **UGA** in RNA. See grep results and
+screenshot below:
 
 ```
 $:zcat klt.gtf.gz | grep 'stop_codon.*738532.*ENST00000599533'
@@ -73,11 +77,7 @@ chr1    hg19_ensGene    stop_codon      738532  738534  0.000000        -       
 $:zcat ens.gtf.gz | grep 'stop_codon.*738532.*ENST00000599533'
 # not output
 ```
-
-The corresponding bases are CTG with reverse complementary as CAG, which is a
-codon for Glutamine (Q), and does not correspond to any of the
-[stop codons](https://en.wikipedia.org/wiki/Stop_codon): **TAG**, **TAA**, and
-**TGA** in DNA, or **UAG**, **UAA**, and **UGA** in RNA.
+![screenshot](https://github.com/bcgsc/gtf_verification/blob/master/img/chr1-738532-AL669831.1.png "screenshot")
 
 <!-- This is very likely due to frame/phase -->
 <!-- 4. Problem: this is common to both `klt_stop_codons.tsv` and -->
