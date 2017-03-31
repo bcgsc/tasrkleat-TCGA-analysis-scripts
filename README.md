@@ -62,18 +62,31 @@ done
 `klt_gtf.gz` are the same. In general, some of the CDS coordinates in
 `ens.gtf.gz` have 3 more bases than corresponding ones in `klt.gtf.gz`.
 
-3. Problem: `klt_stop_codons.tsv` is a *subset* of `ens_stop_codons.tsv`. For
-some of the annotations in `klt_stop_codons.tsv`, but they don't really look
-like so when inspected closely. e.g. chr1:738532-738534, minus strand, the bases
-are GTC, which doesn't correspond to any of the stop codons (UAA, UAG, UGA)
+3. Problem: `klt_stop_codons.tsv` is a *superset* of `ens_stop_codons.tsv`.
+However, for some of the annotations in `klt_stop_codons.tsv`, it doesn't really
+look like a stop codon when inspected closely. e.g. chr1:738532-738534, minus
+strand:
 
-4. Problem: this is common to both `klt_stop_codons.tsv` and
-`ens_stop_codons.tsv`: some of the stop codons are only two bp (e.g.
-chr1:1203242-1203243). Not sure why.
+```
+$:zcat klt.gtf.gz | grep 'stop_codon.*738532.*ENST00000599533'
+chr1    hg19_ensGene    stop_codon      738532  738534  0.000000        -       .       gene_id "AL669831.1"; transcript_id "ENST00000599533";
+$:zcat ens.gtf.gz | grep 'stop_codon.*738532.*ENST00000599533'
+# not output
+```
+
+The corresponding bases are CTG with reverse complementary as CAG, which is a
+codon for Glutamine (Q), and does not correspond to any of the
+[stop codons](https://en.wikipedia.org/wiki/Stop_codon): **TAG**, **TAA**, and
+**TGA** in DNA, or **UAG**, **UAA**, and **UGA** in RNA.
+
+<!-- This is very likely due to frame/phase -->
+<!-- 4. Problem: this is common to both `klt_stop_codons.tsv` and -->
+<!-- `ens_stop_codons.tsv`: some of the stop codons are only two bp (e.g. -->
+<!-- chr1:1203242-1203243). Not sure why. -->
 
 
 ### Conclusion
 
 The two, `ensembl.fixed.sorted.gz` and `Homo_sapiens.GRCh37.75.gtf.gz` are not
 the same, and shouldn't be used interchangably. The annotations for MT and
-unassembled contigs are expected to be more different based on observation.
+unassembled contigs could be more different based on observation.
