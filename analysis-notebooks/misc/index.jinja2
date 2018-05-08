@@ -2,18 +2,21 @@
   <head>
     <title>All APA cases</title>
     {# <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> #}
-    {# <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> #}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
     {# <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> #}
 
 
     <style>
-      body {
-      width: 800px;
+      table {
+      font-size: 12px;
+      display:block;
+      float:left;
+      width: 620px;
       }
 
-      table { 
-      font-size: 12px; 
-      } 
+      span.reported-case {
+      color: red;
+      }
 
       table td, table th { 
       width: 5px; 
@@ -24,11 +27,59 @@
       ul {
       text-align: left;
       }
-      </style>
+
+      div.link-to-figure {
+      cursor: pointer;
+      }
+
+      div.link-to-figure:hover {
+      background-color: yellow;
+      }
+
+      div#arc-plots { 
+      max-width: 750px;
+      margin-left: 620px;
+      }
+
+      div#arc-plots img {
+      width: 100%;
+      }
+
+      div.img-container {
+      position: relative;
+      }
+
+      div.close-img {
+      position: absolute;
+      right: 20px;
+      top: 5px;
+      cursor: pointer;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 0.7em;
+      width: 10px;
+      text-align: center;
+      }
+
+      div.close-img:hover {
+      background-color: red;
+      color: white;
+      }
+
+      a.raw-img {
+      position: absolute;
+      right: 40px;
+      top: 5px;
+      font-size: 0.7em;
+      }
+
+    </style>
+
   </head>
 
   <body>
     <div>
+      <div>
       <strong>Note:</strong>
       <ul>
         <li>
@@ -45,8 +96,11 @@
         </li>
       </ul>
 
+      <p><strong>Instruction:</strong> click on the interested gene-cancer type
+      pairs to view the corresponding arc plots</p>
+     </div>
 
-    <table id="apa-cases" class="table table-fixed">
+  <table id="apa-cases">
       {# <thead> #}
       {# <tr> #}
       {#   <th>#</th> #}
@@ -68,13 +122,14 @@
                   {% if (g, d) in na_list %}
                     <span class="text-disabled">NA</span>
                   {% else %}
-                    <a href="http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all-apa-cases-figures/{{g}}_{{d}}.png" target="_blank">
+                    <div class="link-to-figure"
+                         data-img-name="{{g}}_{{d}}.png">
                     {% if (g, d) in reported_gd_pairs %}
-                      <span style="color:red"><strong><large>{{d}}</large></strong></span>
+                      <span class="reported-case"><strong><large>{{d}}</large></strong></span>
                     {% else %}
                       <small>{{d}}</small>
                     {% endif %}
-                    </a>
+                    </div>
                   {% endif %}
               </td>
             {% endfor %}
@@ -83,7 +138,27 @@
       </tbody>
     </table>
 
-    </div>
-
+  <div id="arc-plots"></div>
+</div>
   </body>
+
+<script>  
+  $('.link-to-figure').click(function() {
+  var urlPath = 'http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all-apa-cases-figures/';
+  var url = urlPath + $(this).attr("data-img-name");
+  console.log(this);  
+  $('div#arc-plots').append(
+  '<div class="img-container">' +
+  '<img src="' + url + '"/>' +
+  '<div class="close-img">x</div>' +
+  '<a class="raw-img" href="' + url + '" target="_blank">Large</a>' +
+  '</div>');
+  });
+
+  $('div#arc-plots').on('click', 'div.close-img', function() { 
+  $(this).parent().remove();
+  });
+</script>  
+
+
 </html>
