@@ -1,19 +1,19 @@
 # Steps
 
-Run bedtools `genome_cov` to calculate coverage per base
+### Run bedtools `genome_cov` to calculate coverage per base
 
 1. use `calc_genome_cov.sh` to generate commands for `genome_cov` calculation in
    parallel.
 1. then execute the generated commands to run `genome_cov`.
 
-Use custom script to calculate coverage per gene.
+### Use custom script to calculate coverage per gene.
 
 1. run `gen_df_genes_coords.py` to obtain genomic coordinates of candidate
    genes, and save them into `df_gene_coords.csv`, which will be used by
    `calc_expression_level.py`.
 1. run `calc_cov_per_gene.py`, and calculate coverage per gene.
 
-Run `concat_all_genomecov_by_gene.ipynb` to concatenate all `genome-by-gene.csv`
+### Run `concat_all_genomecov_by_gene.ipynb` to concatenate all `genome-by-gene.csv`
 files, and save to `all-genome-cov-by-genes.csv`.
 
 
