@@ -7,3 +7,4 @@
   consider lower case sequences.
 * `filter-based-on-APA-evidence-and-annotation.ipynb`: do as the file name
   indicated
+* `cluster-filtered-cleavage-sites.ipynb`: cluster cleavage sites with single-linkage
