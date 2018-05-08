@@ -17,6 +17,8 @@
 files, and save to `all-genome-cov-by-genes.csv`.
 
 
+### Run `calc_RPKMS.ipynb` to generate expression value in RPKMS
+
 # About kmers
 
 Just put here for future reference. kmer analysis isn't part of the manuscript.
