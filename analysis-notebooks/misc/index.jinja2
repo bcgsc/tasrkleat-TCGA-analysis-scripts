@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>All APA cases</title>
+    {# <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> #}
+    {# <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> #}
+    {# <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> #}
+
+
+    <style>
+      body {
+      width: 800px;
+      }
+
+      table { 
+      font-size: 12px; 
+      } 
+
+      table td, table th { 
+      width: 5px; 
+      padding: 1px; 
+      margin: 0px; 
+      } 
+
+      ul {
+      text-align: left;
+      }
+      </style>
+  </head>
+
+  <body>
+    <div>
+      <strong>Note:</strong>
+      <ul>
+        <li>
+        The table below lists the arc plots for all gene-cancer type pairs, but
+        not all of them show significant tumor-specific APA regulation. Only the
+        significant cases are reported in the paper and highlighted below.
+        Hence, the figures linked below are a superset of what are being
+        reported in the paper, but they are not as carefully formatted.</li>
+        </li>
+
+        <li>For three pairs, (<i>NKX2-1</i>, COAD), (<i>TERT</i>, KICH), and
+          (<i>TERT</i>, KIRP), no cleavage site is detected in the normal samples,
+          so their corresponding arc plots cannot be generated
+        </li>
+      </ul>
+
+
+    <table id="apa-cases" class="table table-fixed">
+      {# <thead> #}
+      {# <tr> #}
+      {#   <th>#</th> #}
+      {#   <th>Gene</th> #}
+      {#   {% for d in diseases %} #}
+      {#     <th>{{d}}</th> #}
+      {#   {% endfor %} #}
+      {# </tr> #}
+      {# </thead> #}
+
+      <tbody>
+        {% for g in genes %}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td><i><strong>{{g}}<strong></i></td>
+            {% for d in diseases %}
+              <td>
+                {{dd}}
+                  {% if (g, d) in na_list %}
+                    <span class="text-disabled">NA</span>
+                  {% else %}
+                    <a href="http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all-apa-cases-figures/{{g}}_{{d}}.png" target="_blank">
+                    {% if (g, d) in reported_gd_pairs %}
+                      <span style="color:red"><strong><large>{{d}}</large></strong></span>
+                    {% else %}
+                      <small>{{d}}</small>
+                    {% endif %}
+                    </a>
+                  {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    </div>
+
+  </body>
+</html>
