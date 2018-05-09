@@ -12,6 +12,7 @@ utrtargets/reference/*.gtf.gz.tbi
 
 RPKMS-calculation/kmer-analysis/
 RPKMS-calculation/tcga
+RPKMS-calculation/calc_genome_cov.cmd.parallel.txt.gz
 
 deprecated
 
