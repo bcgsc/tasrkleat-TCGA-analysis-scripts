@@ -1,9 +1,0 @@
-venv
-.cache/
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-
-reference/*.fa
-reference/*.fa.fai
-reference/*.gtf

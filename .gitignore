@@ -8,8 +8,10 @@ utrtargets/reference/*.fa
 utrtargets/reference/*.fa.fai
 utrtargets/reference/*.gtf
 utrtargets/reference/*.gtf.gz
-utrtargets/reference/*.gtf.gz.tabi
+utrtargets/reference/*.gtf.gz.tbi
 
+RPKMS-calculation/kmer-analysis/
+RPKMS-calculation/tcga
 
 deprecated
 
