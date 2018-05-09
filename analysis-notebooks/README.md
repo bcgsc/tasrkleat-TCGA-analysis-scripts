@@ -27,8 +27,12 @@ supplemental materials
 1. `resolve-APA-trend.ipynb`: trying to resolve the trend in terms of
    shortening/lengthening for the identified tumor-specific APA cases. Write out
    `aca_trends.csv`.
-1 `map-clv2sc-based-on-annotation-for-114-genes.ipynb`: extract the mapping
+1. `map-clv2sc-based-on-annotation-for-114-genes.ipynb`: extract the mapping
   between cleavage sites and stop codons based on GTF annotation for 114 genes.
+1. `plot-arc-plots-for-supp-mat-for-114-genes-and-14-diseases-without-percent-cutoff-with-expr.ipynb`:
+   In contrast to the figures in main, there is cutoff imposed on the percent
+   change, so the plots might be noiser, but more comprehensive in terms of
+   information. Also included is expression distribution.
 
 In general, the notebook names are indicative of their functions.
 
