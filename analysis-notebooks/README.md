@@ -32,11 +32,6 @@ supplemental materials
 
 In general, the notebook names are indicative of their functions.
 
-## Misc
-
-Miscellaneous results that may not be reported in the manuscript, but still
-may be useful for reproduction or insights.
-
 
 ## CS-postprocessing
 
@@ -52,11 +47,7 @@ may be useful for reproduction or insights.
 1. `cluster-filtered-cleavage-sites.ipynb`: cluster cleavage sites with single-linkage
 
 
-# CS postprocess order:
+## Misc
 
-The result of postprocess is prepared for you here
-http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all_cba.KLEAT.on-target-cleaned.filtered.clustered.csv.gz,
-
-so you don't need to reproduce it yourself.
-
-concat => clenaup => filter => cluster
+Miscellaneous results that may not be reported in the manuscript, but still
+may be useful for reproduction or insights.
