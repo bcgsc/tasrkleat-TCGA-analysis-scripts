@@ -4,11 +4,12 @@ notebooks:
 Please download needed data from
 http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/
 
-**Note**: the location of output directories may be outdated in the notebooks.
-Please add symblinks accordingly. In general, it looks for the three
-directories, `metadata`, `reference_data`, `results_data` for data
+**Note**: *the location of output directories may be outdated in the notebooks.
+Please modify the path to those directories or add symblinks accordingly. In
+general, it looks for the three directories, `metadata`, `reference_data`,
+`results_data` for data
 [already previously prepared](http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/),
-and outputs analysis results in a separate directory `results`.
+and outputs analysis results in a separate directory `results`*.
 
 # Key notebooks and their functions:
 
