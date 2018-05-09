@@ -11,6 +11,13 @@ general, it looks for the three directories, `metadata`, `reference_data`,
 [already previously prepared](http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/),
 and outputs analysis results in a separate directory `results`*.
 
+To use module (e.g. `hexamer_search`) in the parent directory, one way to do so
+
+```
+import sys
+sys.path.insert(0, '..')
+````
+
 # Key notebooks and their functions:
 
 ## Core
