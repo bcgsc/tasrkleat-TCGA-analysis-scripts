@@ -7,7 +7,7 @@ http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/
 **Note**: *the location of output directories may be outdated in the notebooks.
 Please modify the path to those directories or add symblinks accordingly. In
 general, it looks for the three directories, `metadata`, `reference_data`,
-`results_data` for data
+`__results` for data
 [already previously prepared](http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/),
 and outputs analysis results in a separate directory `results`*.
 
@@ -94,3 +94,8 @@ may be useful for reproduction or insights.
 ##### `GTF-analysis-of-overlapped-genes.ipynb`
 
 Overall, 18.6% of neighbouring genes overlap across all chromosomes.
+
+# Miscellaneous
+
+Some of the notebooks used a module named `hexamer_search`, you could download
+it from https://github.com/bcgsc/tasrkleat/tree/master/hexamer_search.
