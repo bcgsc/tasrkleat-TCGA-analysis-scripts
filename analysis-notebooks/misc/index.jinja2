@@ -1,12 +1,29 @@
 <html>
   <head>
-    <title>All APA cases</title>
+    <title>APA regulations of select genes in cancer</title>
     {# <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> #}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
     {# <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> #}
 
 
     <style>
+      div.intro {
+      max-width: 1000px;
+      font-family: sans-serif;
+      font-size: 0.8em;
+      }
+
+      div.intro li {
+      margin-bottom: 0.5em;
+      }
+
+      div.legend {
+      max-width: 500px;
+      margin-left: 620px;
+      font-family: sans-serif;
+      font-size: 0.7em;
+      }
+
       table {
       font-size: 12px;
       display:block;
@@ -53,6 +70,7 @@
 
       div.img-container {
       position: relative;
+      margin-bottom: 3px;
       }
 
       div.close-img {
@@ -85,74 +103,140 @@
 
   <body>
     <div>
-      <div>
-      <strong>Note:</strong>
-      <ul>
-        <li>
-        The table below lists the arc plots for all gene-cancer type pairs, but
-        not all of them show significant tumor-specific APA regulation. Only the
-        significant cases are reported in the paper and highlighted below.
-        Hence, the figures linked below are a superset of what are being
-        reported in the paper, but they are not as carefully formatted.</li>
-        </li>
+      <h1>APA regulations of select genes in cancer</h1>
 
-        <li>For three pairs, (<i>NKX2-1</i>, COAD), (<i>TERT</i>, KICH), and
-          (<i>TERT</i>, KIRP), no cleavage site is detected in the normal samples,
-          so their corresponding arc plots cannot be generated
-        </li>
-      </ul>
+      <div class="intro">
 
-      <p><strong>Instruction:</strong> click on the interested gene-cancer type
-      pairs to view the corresponding arc plots</p>
-     </div>
+        <h4>Citation</h4>
+        <p class="citation">
+          Xue, Z. et al. 2017. <cite>Recurrent tumor-specific
+        regulation of alternative polyadenylation of cancer-related
+        genes</cite>. Under review. Preprint is available
+        at <a href="https://doi.org/10.1101/160960"
+        target="_blank">https://doi.org/10.1101/160960</a>.
+        </p>
 
-  <table id="apa-cases">
-      {# <thead> #}
-      {# <tr> #}
-      {#   <th>#</th> #}
-      {#   <th>Gene</th> #}
-      {#   {% for d in diseases %} #}
-      {#     <th>{{d}}</th> #}
-      {#   {% endfor %} #}
-      {# </tr> #}
-      {# </thead> #}
+        <h4>Introduction</h4>
+        <p>
+          In addition to the 77 cases (arc plots) reported in the manuscript and
+          its supplemental matrials, here, we present a total of 1593 arc plots
+          (114 (genes) x 14 (cancer types) - 3) for all gene-cancer type pairs
+          considered in this study in an interactive webpage. Hence, these plots
+          are a superset of what are presented in the manuscript. Note that for
+          three pairs, (<i>NKX2-1</i>, COAD), (<i>TERT</i>, KICH), and
+          (<i>TERT</i>, KIRP), no cleavage site was detected in the normal
+          samples, so they have no corresponding arc plots; NA is shown instead.
+          </p>
+        <p>
+          Such an interactive format also enables the readers to inspect their
+          interested genes in more detail.
+        </p>
 
-      <tbody>
-        {% for g in genes %}
-          <tr>
-            <td>{{loop.index}}</td>
-            <td><i><strong>{{g}}<strong></i></td>
-            {% for d in diseases %}
-              <td>
-                {{dd}}
-                  {% if (g, d) in na_list %}
-                    <span class="text-disabled">NA</span>
-                  {% else %}
-                    <div class="link-to-figure"
-                         data-img-name="{{g}}_{{d}}.png"
-                         data-reported-case="{{1 if (g, d) in reported_gd_pairs else 0}}"
-                         >
-                    {% if (g, d) in reported_gd_pairs %}
-                      <span class="reported-case"><strong><large>{{d}}</large></strong></span>
-                    {% else %}
-                      <small>{{d}}</small>
-                    {% endif %}
-                    </div>
-                  {% endif %}
-              </td>
+        <h4>Instruction</h4>
+        <ul>
+          <li>
+            To the left, the table layouts all 1596 gene-cancer type pairs with
+            those that are identified to show tumor-specific APA regulations
+            highlighted in <strong style="color:blue">blue</strong> (77 pairs).
+          </li>
+          <li>
+            To the right, by clicking any gene-cancer type pair in the left
+            table, the corresponding arc plot will show up on the right. Arc
+            plots of tumor-specific APA cases will be highlighted
+            with <strong style="color:blue">blue</strong> borders.
+          </li>
+        </ul>
+      </div> {#end of intro#}
+
+      <table id="apa-cases">
+          <thead> 
+          <tr> 
+            <th>#</th> 
+            <th>Gene</th> 
+            <th colSpan="14">Disease</th>
+          </tr> 
+          </thead> 
+          <tbody>
+            {% for g in genes %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td><i><strong>{{g}}<strong></i></td>
+                {% for d in diseases %}
+                  <td>
+                    {{dd}}
+                      {% if (g, d) in na_list %}
+                        <span class="text-disabled">NA</span>
+                      {% else %}
+                        <div class="link-to-figure"
+                             data-img-name="{{g}}_{{d}}.png"
+                             data-reported-case="{{1 if (g, d) in reported_gd_pairs else 0}}"
+                             >
+                        {% if (g, d) in reported_gd_pairs %}
+                          <span class="reported-case"><strong><large>{{d}}</large></strong></span>
+                        {% else %}
+                          <small>{{d}}</small>
+                        {% endif %}
+                        </div>
+                      {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
             {% endfor %}
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
 
-  <div id="arc-plots"></div>
+  <div id="arc-plots">
+  </div>
+
+  <div class="legend">
+    <p><i>Click on a gene-cancer type pair in the left table to see an arc plot</i></p>
+
+    <p><strong>Legend:</strong> Inside each left-hand panel, each group of bars
+    represents the frequency of a specific CS in normal (blue) and tumor (red)
+    samples. Bar groups are ordered by corresponding CS genomic coordinates. The
+    text box shows the number of normal (N) and tumor (T) samples that were used
+    for frequency calculation. The label box color indicates the trend of 3' UTR
+    length modulation in cancer. The top of each right-hand panel shows the
+    number of cancer types supporting recurrent tumor-specific APA regulations.
+    For example, "4 cancers" means that besides LUAD, APA regulation with
+    consistent pattern of FGF2 is also observed in another three cancer types
+    (see text and Figure S4 for details). Vertical arrows indicate the positions
+    of predicted CSs. Annotated and predicted CSs match well, but are not
+    expected to overlap exactly. An arrow pointing upwards (downwards)
+    represents an increase (decrease) in frequency from normal to tumor. Arrow
+    height represents the difference (&#916;). Bars and arrows of insignificant
+    difference are colored gray. The X-axis represents the genomic coordinate
+    offset by that of the first stop codon. The horizontal arrow indicates the
+    gene strand.
+    </p>
+
+
+    <p>
+    When the 3' UTR length change is too complex to be resolved into a
+    shortening or lengthening trend, the corresponding text box is left
+    uncolored. NMD-related transcript elements are colored in cyan. An orange
+    arrow indicates that a predicted CS with a significant frequency change is
+    mapped to multiple stop codons, with its associated 3' UTR length being
+    ambiguous.
+    </p>
+
+
+    <p>
+    Different from the figures in the main text, all predicted CSs are plotted
+    without filtering by the low frequency (<5%) and insignificant change
+    criteria. As a result, the number of CSs for the same gene in different
+      cancer types may differ.
+                                                 </p>
+
+    <p>
+    Besides, we also computed the distribution of expression in reads per
+      kilobase of transcript per million sequenced reads (RPKMS).
+      </p>
+  </p>
+
 </div>
-  </body>
 
-<script>  
-  $('.link-to-figure').click(function() {
-  console.log(this);
+<script> $('.link-to-figure').click(function() { console.log(this);
 
   var urlPath = 'http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all-apa-cases-figures/';
   var url = urlPath + $(this).attr("data-img-name");
@@ -172,5 +256,5 @@
   });
 </script>  
 
-
+  </body>
 </html>
