@@ -1,0 +1,14 @@
+[user_input_options]
+filter_id=targets
+kmer_size=25
+desired_false_positve_rate=0.0075
+number_of_hash_functions=7
+expected_num_entries=2307431
+sequence_sources=experiment/utrtargets/targets.fa 
+
+[runtime_options]
+size=23499008
+num_entries=859757
+approximate_false_positive_rate=3.00594e-05
+redundant_sequences=1447674
+redundant_fpr=4.15104e-06

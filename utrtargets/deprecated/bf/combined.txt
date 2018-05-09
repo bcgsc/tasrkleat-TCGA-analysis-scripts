@@ -1,0 +1,14 @@
+[user_input_options]
+filter_id=combined
+kmer_size=25
+desired_false_positve_rate=0.0075
+number_of_hash_functions=7
+expected_num_entries=301748
+sequence_sources=combined.fa 
+
+[runtime_options]
+size=3073024
+num_entries=300639
+approximate_false_positive_rate=0.00736661
+redundant_sequences=1109
+redundant_fpr=0.00120045
