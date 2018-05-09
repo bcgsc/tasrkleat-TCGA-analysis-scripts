@@ -1,3 +1,5 @@
+Scripts in this folder compares the two versions of gtfs.
+
 ## Raw data inside `gtfs`
 
 * `ucsc.gtf.gz` was downloaded from http://genome.ucsc.edu/cgi-bin/hgTables, and
