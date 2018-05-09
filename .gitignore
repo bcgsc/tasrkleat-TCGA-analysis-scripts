@@ -1,0 +1,22 @@
+venv
+.cache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+utrtargets/reference/*.fa
+utrtargets/reference/*.fa.fai
+utrtargets/reference/*.gtf
+utrtargets/reference/*.gtf.gz
+utrtargets/reference/*.gtf.gz.tabi
+
+
+deprecated
+
+metadata
+reference_data
+results_data
+results
+
+# supposed to be a symlink to https://github.com/bcgsc/tasrkleat/tree/master/hexamer_search
+hexamer_search
