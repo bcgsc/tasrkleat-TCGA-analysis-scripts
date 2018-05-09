@@ -15,10 +15,11 @@ RPKMS-calculation/tcga
 
 deprecated
 
-metadata
-reference_data
-results_data
-results
+data/metadata
+data/reference_data
+data/results_data
+__results
 
-# supposed to be a symlink to https://github.com/bcgsc/tasrkleat/tree/master/hexamer_search
-hexamer_search
+# tmp files
+*.lele
+lele*
