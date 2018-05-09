@@ -15,7 +15,12 @@
       }
 
       span.reported-case {
-      color: red;
+      color: blue;
+      font-weight:bold;
+      }
+
+      img.reported-case {
+      border: solid 1px blue;
       }
 
       table td, table th { 
@@ -42,6 +47,7 @@
       }
 
       div#arc-plots img {
+      {# right border would be missing if 100% #}
       width: 100%;
       }
 
@@ -123,7 +129,9 @@
                     <span class="text-disabled">NA</span>
                   {% else %}
                     <div class="link-to-figure"
-                         data-img-name="{{g}}_{{d}}.png">
+                         data-img-name="{{g}}_{{d}}.png"
+                         data-reported-case="{{1 if (g, d) in reported_gd_pairs else 0}}"
+                         >
                     {% if (g, d) in reported_gd_pairs %}
                       <span class="reported-case"><strong><large>{{d}}</large></strong></span>
                     {% else %}
@@ -144,12 +152,16 @@
 
 <script>  
   $('.link-to-figure').click(function() {
+  console.log(this);
+
   var urlPath = 'http://bcgsc.ca/downloads/tasrkleat-static/off-cloud/results_data/all-apa-cases-figures/';
   var url = urlPath + $(this).attr("data-img-name");
-  console.log(this);  
+  var imgClass = parseInt($(this).attr("data-reported-case")) ? 'reported-case' : 'unreported-case';
+  {# console.log(imgClass); #}
+
   $('div#arc-plots').append(
   '<div class="img-container">' +
-  '<img src="' + url + '"/>' +
+  '<img class=' + imgClass + ' src="' + url + '"/>' +
   '<div class="close-img">x</div>' +
   '<a class="raw-img" href="' + url + '" target="_blank">Large</a>' +
   '</div>');
