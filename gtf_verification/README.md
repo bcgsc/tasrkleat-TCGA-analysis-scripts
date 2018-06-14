@@ -3,8 +3,10 @@ Scripts in this folder compares the two versions of gtfs.
 ## Raw data inside `gtfs`
 
 * `ucsc.gtf.gz` was downloaded from http://genome.ucsc.edu/cgi-bin/hgTables, and
-then sorted and indexed. See `how-to-download-ucsc-gtf-gz.png` for the
-parameters selected when it's downloaded.
+then sorted and indexed. The exact parameters used for downloading is shown
+below.
+![how-to-download-ucsc-gtf-gz.png](/gtf_verification/gtfs/how-to-download-ucsc-gtf-gz.png?raw=true)
+
 
 * `Homo_sapiens.GRCh37.75.gtf.gz` was downloaded from
 http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz,
@@ -79,7 +81,7 @@ chr1    hg19_ensGene    stop_codon      738532  738534  0.000000        -       
 $:zcat ens.gtf.gz | grep 'stop_codon.*738532.*ENST00000599533'
 # not output
 ```
-![screenshot](https://github.com/bcgsc/gtf_verification/blob/master/img/chr1-738532-AL669831.1.png "screenshot")
+![screenshot](/gtf_verification/img/chr1-738532-AL669831.1.png?raw=true "screenshot")
 
 <!-- This is very likely due to frame/phase -->
 <!-- 4. Problem: this is common to both `klt_stop_codons.tsv` and -->
