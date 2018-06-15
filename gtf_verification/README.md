@@ -21,7 +21,7 @@ Commands used for sorting and indexing:
 # ref: http://www.htslib.org/doc/tabix.html
 for GTF_PREFIX in ucsc.gtf.gz Homo_sapiens.GRCh37.75.gtf; do 
     unpigz -c ${GTF_PREFIX}.gz | \grep -v ^"#" | sort -k1,1 -k4,4n | bgzip > ${GTF_PREFIX}.sorted.gz
-    tabix Homo_sapiens.GRCh37.75.gtf.sorted.gz
+    tabix ${GTF_PREFIX}.sorted.gz
 done
 ```
 
