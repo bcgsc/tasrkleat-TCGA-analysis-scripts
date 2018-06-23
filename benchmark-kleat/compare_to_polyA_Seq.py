@@ -93,7 +93,7 @@ if __name__ == "__main__":
     print(f'compared to\tSensitivity\tPrecision\tF1')
     print(f'{truth_sample}\t{se}\t{pr}\t{f1}')
 
-    output = f'{os.path.dirname(pred_file)}/vs-polyA-Seq.csv'
+    output = f'{os.path.dirname(pred_file)}/{os.path.basename(pred_file)}.vs-polyA-Seq.csv'
     with open(output, 'wt') as opf:
         opf.write('{0} {1} {2} {3}\n'.format(pred_file, se, pr, f1))
     print('saved to {0}'.format(output))
