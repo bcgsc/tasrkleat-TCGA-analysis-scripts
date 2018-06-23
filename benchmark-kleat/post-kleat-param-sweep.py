@@ -181,6 +181,5 @@ if __name__ == "__main__":
     out_csv = os.path.join(outdir, out_name)
     filtered_df[['seqname', 'strand', 'mclv']]\
         .drop_duplicates()\
-        .rename(columns={'mclv': 'clv'})\
         .to_csv(out_csv, index=False)
     print('saved to {0}'.format(out_csv))
