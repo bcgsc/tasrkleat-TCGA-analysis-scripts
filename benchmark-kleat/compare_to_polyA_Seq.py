@@ -1,10 +1,7 @@
-import os
 import sys
 
 import pandas as pd
 import numpy as np
-
-sys.path.insert(0, '../apa_manuscript/')
 
 
 def load_polya_df(polya_csv):
@@ -86,17 +83,17 @@ if __name__ == "__main__":
 
     df_ref = load_polya_df(truth_csv)
 
-    pred_file_loader = eval(f'load_{pred_type}_df')
+    pred_file_loader = eval('load_{pred_type}_df'.format(**locals()))
     df_pred = pred_file_loader(pred_file)
 
     replace_seqname(df_ref)
     replace_seqname(df_pred)
 
     se, pr, f1 = compare(df_pred, df_ref)
-    print(f'compared to\tSensitivity\tPrecision\tF1')
-    print(f'{truth_sample}\t{se}\t{pr}\t{f1}')
+    print('compared to\tSensitivity\tPrecision\tF1'.format(**locals()))
+    print('{truth_sample}\t{se}\t{pr}\t{f1}'.format(**locals()))
 
-    output = f'{os.path.dirname(pred_file)}/{os.path.basename(pred_file)}.vs-polyA-Seq.csv'
+    output = '{os.path.dirname(pred_file)}/{os.path.basename(pred_file)}.vs-polyA-Seq.csv'.format(**locals())
     with open(output, 'wt') as opf:
         opf.write('{0} {1} {2} {3}\n'.format(pred_file, se, pr, f1))
     print('saved to {0}'.format(output))

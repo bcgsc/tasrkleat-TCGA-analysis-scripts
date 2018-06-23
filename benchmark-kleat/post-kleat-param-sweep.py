@@ -1,10 +1,8 @@
 import os
 import sys
-sys.path.insert(0, '/projects/btl/zxue/tasrkleat-TCGA-results/apa_manuscript/')
 
 import pandas as pd
 import numpy as np
-import matplotlib
 import pysam
 
 from hexamer_search import search_hexamer
