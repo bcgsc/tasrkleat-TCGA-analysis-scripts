@@ -170,7 +170,7 @@ if __name__ == "__main__":
         filtered_df = filter_by_confidence(odf, nda, ltc, nbr, maxbrtl, hxm)
     elif filter_style == 'B':
         # CM2 way of filtering by #tail+bridge_reads
-        outdir = os.path.dirname(input_kleat_output) + '/postproce-styleB-tbr-tuning'
+        outdir = os.path.dirname(input_kleat_output) + '/postproc-styleB-tbr-tuning'
         tbr = int(sys.argv[3])
         out_name = 'tbr_gt_{0}.csv'.format(tbr)
         filtered_df = filter_by_tbr(odf, tbr)
