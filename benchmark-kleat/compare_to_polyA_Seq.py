@@ -21,6 +21,9 @@ def load_kleat_df(kleat_csv):
     cols = ['strand', 'seqname', 'mclv']
     df = pd.read_csv(kleat_csv, usecols=cols)
     df = df.rename(columns={'mclv': 'clv'})
+    # this step actually takes consideration into clustering if drop_duplicates
+    # wasn't done yet when generating postprocessed kleat results; if
+    # drop_duplicates was already done, it makes no difference
     df = df.drop_duplicates().copy()
     return df
 
