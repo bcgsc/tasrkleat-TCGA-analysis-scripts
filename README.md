@@ -26,3 +26,8 @@ To run jupyter notebook server
 ```
 jupyter notebook --no-browser --ip 0.0.0.0
 ```
+
+### Q&A
+
+If you have any question, please ask by
+[opening a new issue](https://github.com/bcgsc/tasrkleat-TCGA-analysis-scripts/issues/new?template=-your-question-.md).
