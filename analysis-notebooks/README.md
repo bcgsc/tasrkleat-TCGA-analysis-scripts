@@ -93,7 +93,7 @@ may be useful for reproduction or insights.
 * Even chr1 has just a bit over 2k (2076) genes.
 * Over 73% of protein coding genes have more than one transcripts
 
-##### `GTF-analysis-general-properties-for-target-genes.ipynb`
+##### `GTF-analysis-of-target-genes.ipynb`
 
 * No overlap among target genes
 * Total length of target genes is ~93.5M bp, including introns
