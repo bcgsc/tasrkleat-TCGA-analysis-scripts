@@ -177,7 +177,9 @@ if __name__ == "__main__":
 
     filtered_df = cluster_to_stable(filtered_df)
     out_csv = os.path.join(outdir, out_name)
-    filtered_df[['seqname', 'strand', 'mclv']]\
-        .drop_duplicates()\
-        .to_csv(out_csv, index=False)
+    # don't drop_duplicates here, which eases debugging, drop_duplicates should
+    # be taken care in the downstream steps
+
+    # df[['seqname', 'strand', 'mclv']].drop_duplicates()\
+    filtered_df.to_csv(out_csv, index=False)
     print('saved to {0}'.format(out_csv))
