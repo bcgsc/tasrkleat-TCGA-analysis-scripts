@@ -1,8 +1,9 @@
 ### Citation
 
-Xue, Z. et al. 2018. *Recurrent tumor-specific regulation of alternative
-polyadenylation of cancer-related genes*. Under review. Preprint is available at
-https://doi.org/10.1101/160960.
+<a href=https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4903-7
+, target=_blank> Xue Z, Warren RL, Gibb EA, MacMillan D, Wong J, Chiu R, et al.
+<cite>Recurrent tumor-specific regulation of alternative polyadenylation of
+cancer-related genes</cite>. BMC Genomics. 2018;19:536</a>
 
 Notebooks related to result reproduction are mostly in `analysis-notebooks`. For
 details, please see the `README.md` inside each folder.
