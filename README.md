@@ -5,8 +5,11 @@
 <cite>Recurrent tumor-specific regulation of alternative polyadenylation of
 cancer-related genes</cite>. BMC Genomics. 2018;19:536</a>
 
-Notebooks related to result reproduction are mostly in `analysis-notebooks`. For
-details, please see the `README.md` inside each folder.
+### Notebooks
+
+Those notebooks that related to result reproduction are mostly in
+`analysis-notebooks`. For details, please see the `README.md` inside each
+folder.
 
 
 ### Run codes
