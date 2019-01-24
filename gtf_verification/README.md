@@ -23,6 +23,10 @@ for GTF_PREFIX in ucsc.gtf.gz Homo_sapiens.GRCh37.75.gtf; do
     unpigz -c ${GTF_PREFIX}.gz | \grep -v ^"#" | sort -k1,1 -k4,4n | bgzip > ${GTF_PREFIX}.sorted.gz
     tabix ${GTF_PREFIX}.sorted.gz
 done
+
+# Note: for igv to load properly, the above code needs adjusted so
+that the sorted-and-indexed gtf file ends in `.sorted.gtf.gz` instead of
+`.gtf.sorted.gz`
 ```
 
 ## To reproduce the results as in `diff`, run 
